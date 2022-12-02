@@ -1,31 +1,33 @@
 package com.ty.Hospital.HospitalBoot_prc.dto;
 
-import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
-public class Hospital {
+public class Branch {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
+	private String location;
 	private long phone;
-	private String email;
-	@OneToMany(mappedBy = "hospital",cascade =  CascadeType.ALL)
-	private List<Branch> branch;
+	@ManyToOne
+	@JoinColumn
+	private Hospital hospital;
+	@OneToOne(cascade = CascadeType.ALL)
+	private Location loc;
 	
-	
-	public List<Branch> getBranch() {
-		return branch;
+	public Location getLoc() {
+		return loc;
 	}
-	public void setBranch(List<Branch> branch) {
-		this.branch = branch;
+	public void setLoc(Location loc) {
+		this.loc = loc;
 	}
 	public int getId() {
 		return id;
@@ -39,20 +41,24 @@ public class Hospital {
 	public void setName(String name) {
 		this.name = name;
 	}
+	public String getLocation() {
+		return location;
+	}
+	public void setLocation(String location) {
+		this.location = location;
+	}
 	public long getPhone() {
 		return phone;
 	}
 	public void setPhone(long phone) {
 		this.phone = phone;
 	}
-	public String getEmail() {
-		return email;
+	public Hospital getHospital() {
+		return hospital;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setHospital(Hospital hospital) {
+		this.hospital = hospital;
 	}
-	
-	
 	
 
 }
