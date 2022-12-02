@@ -1,6 +1,7 @@
 package com.ty.Hospital.HospitalBoot_prc.util;
 
 public class ResponseStructure<T> {
+
 	private int status;
 	private String message;
 	private T data;
@@ -22,4 +23,5 @@ public class ResponseStructure<T> {
 	public void setData(T data) {
 		this.data = data;
 	}
+
 }

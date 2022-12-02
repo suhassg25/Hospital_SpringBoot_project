@@ -17,7 +17,7 @@ public class Hospital {
 	private String name;
 	private long phone;
 	private String email;
-	@OneToMany(mappedBy = "hospital",cascade =  CascadeType.ALL)
+	@OneToMany(cascade =  CascadeType.ALL)
 	private List<Branch> branch;
 	
 	
