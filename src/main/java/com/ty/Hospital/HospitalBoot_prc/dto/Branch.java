@@ -5,8 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -17,9 +15,7 @@ public class Branch {
 	private String name;
 	private String location;
 	private long phone;
-	@ManyToOne
-	@JoinColumn
-	private Hospital hospital;
+	
 	@OneToOne(cascade = CascadeType.ALL)
 	private Location loc;
 	
@@ -53,12 +49,7 @@ public class Branch {
 	public void setPhone(long phone) {
 		this.phone = phone;
 	}
-	public Hospital getHospital() {
-		return hospital;
-	}
-	public void setHospital(Hospital hospital) {
-		this.hospital = hospital;
-	}
+	
 	
 
 }
