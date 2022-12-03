@@ -41,7 +41,6 @@ public class PersonController {
 
 		@ApiOperation(value="Update Person", notes="It is used to update Person")
 		@ApiResponses(value= {
-				@ApiResponse(code=201,message="created"),
 				@ApiResponse(code=500,message="Internal Server Error"),
 				@ApiResponse(code=404,message="NotFound")})
 		
@@ -53,7 +52,6 @@ public class PersonController {
 		
 		@ApiOperation(value="Delete Person", notes="It is used to delete Person")
 		@ApiResponses(value= {
-				@ApiResponse(code=201,message="created"),
 				@ApiResponse(code=500,message="Internal Server Error"),
 				@ApiResponse(code=404,message="NotFound")})
 		@DeleteMapping
@@ -63,7 +61,6 @@ public class PersonController {
 
 		@ApiOperation(value="Get Person", notes="It is used to get  Person")
 		@ApiResponses(value= {
-				@ApiResponse(code=201,message="created"),
 				@ApiResponse(code=500,message="Internal Server Error"),
 				@ApiResponse(code=404,message="NotFound")})
 		@GetMapping

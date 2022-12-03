@@ -26,7 +26,6 @@ public class ItemsController {
 
 	@ApiOperation(value="Update Items", notes="It is used to update Items")
 	@ApiResponses(value= {
-			@ApiResponse(code=201,message="created"),
 			@ApiResponse(code=500,message="Internal Server Error"),
 			@ApiResponse(code=404,message="NotFound")})
 	
@@ -38,7 +37,6 @@ public class ItemsController {
 
 	@ApiOperation(value="Get Items", notes="It is used to get Items")
 	@ApiResponses(value= {
-			@ApiResponse(code=201,message="created"),
 			@ApiResponse(code=500,message="Internal Server Error"),
 			@ApiResponse(code=404,message="NotFound")})
 	@GetMapping

@@ -29,7 +29,6 @@ public class BranchController {
 
 		@ApiOperation(value="Update Branch", notes="It is used to update Branch")
 		@ApiResponses(value= {
-				@ApiResponse(code=201,message="created"),
 				@ApiResponse(code=500,message="Internal Server Error"),
 				@ApiResponse(code=404,message="NotFound")})
 		
@@ -43,7 +42,6 @@ public class BranchController {
 
 		@ApiOperation(value="Get Branch", notes="It is used to get Branch")
 		@ApiResponses(value= {
-				@ApiResponse(code=201,message="created"),
 				@ApiResponse(code=500,message="Internal Server Error"),
 				@ApiResponse(code=404,message="NotFound")})
 		@GetMapping

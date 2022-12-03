@@ -24,7 +24,6 @@ public class EncounterController {
 
 	@ApiOperation(value="Update Encounter", notes="It is used to update Encounter")
 	@ApiResponses(value= {
-			@ApiResponse(code=201,message="created"),
 			@ApiResponse(code=500,message="Internal Server Error"),
 			@ApiResponse(code=404,message="NotFound")})
 	
@@ -36,7 +35,6 @@ public class EncounterController {
 
 	@ApiOperation(value="Get Encounter", notes="It is used to get Encounter")
 	@ApiResponses(value= {
-			@ApiResponse(code=201,message="created"),
 			@ApiResponse(code=500,message="Internal Server Error"),
 			@ApiResponse(code=404,message="NotFound")})
 	@GetMapping

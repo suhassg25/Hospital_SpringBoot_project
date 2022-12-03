@@ -24,8 +24,7 @@ public class LocationController {
 
 	@ApiOperation(value="Update Location", notes="It is used to update Location")
 	@ApiResponses(value= {
-			@ApiResponse(code=201,message="created"),
-			@ApiResponse(code=500,message="Internal Server Error"),
+		@ApiResponse(code=500,message="Internal Server Error"),
 			@ApiResponse(code=404,message="NotFound")})
 	
 	@PutMapping(consumes= {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE}, produces= {MediaType.APPLICATION_JSON_VALUE})
@@ -36,7 +35,6 @@ public class LocationController {
 
 	@ApiOperation(value="Get Location", notes="It is used to get Location")
 	@ApiResponses(value= {
-			@ApiResponse(code=201,message="created"),
 			@ApiResponse(code=500,message="Internal Server Error"),
 			@ApiResponse(code=404,message="NotFound")})
 	@GetMapping

@@ -1,12 +1,16 @@
 package com.ty.Hospital.HospitalBoot_prc.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.ty.Hospital.HospitalBoot_prc.dao.HospitalDao;
+import com.ty.Hospital.HospitalBoot_prc.dto.Branch;
 import com.ty.Hospital.HospitalBoot_prc.dto.Hospital;
+import com.ty.Hospital.HospitalBoot_prc.dto.Location;
 import com.ty.Hospital.HospitalBoot_prc.exception.NoSuchIdFoundException;
 import com.ty.Hospital.HospitalBoot_prc.exception.UnableToUpdateException;
 import com.ty.Hospital.HospitalBoot_prc.util.ResponseStructure;
@@ -19,11 +23,12 @@ private HospitalDao dao;
 	
 	public ResponseEntity<ResponseStructure<Hospital>> saveHospital(Hospital hospital)
 	{
+		
 		ResponseEntity<ResponseStructure<Hospital>> entity;
 		ResponseStructure<Hospital> responseStructure=new ResponseStructure<Hospital>();
 		responseStructure.setStatus(HttpStatus.CREATED.value());
 		responseStructure.setMessage("Created Data");
-		responseStructure.setData(dao.saveHospital(hospital));
+		responseStructure.setData(dao.saveHospital(hospital)); 
 		return entity=new ResponseEntity<ResponseStructure<Hospital>>(responseStructure,HttpStatus.CREATED);
 		
 	}

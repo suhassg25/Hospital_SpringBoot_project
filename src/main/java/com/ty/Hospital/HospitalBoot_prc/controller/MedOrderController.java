@@ -23,7 +23,6 @@ public class MedOrderController {
 
 	@ApiOperation(value="Update MedOrder", notes="It is used to update MedOrder")
 	@ApiResponses(value= {
-			@ApiResponse(code=201,message="created"),
 			@ApiResponse(code=500,message="Internal Server Error"),
 			@ApiResponse(code=404,message="NotFound")})
 	
@@ -35,7 +34,6 @@ public class MedOrderController {
 
 	@ApiOperation(value="Get MedOrder", notes="It is used to get MedOrder")
 	@ApiResponses(value= {
-			@ApiResponse(code=201,message="created"),
 			@ApiResponse(code=500,message="Internal Server Error"),
 			@ApiResponse(code=404,message="NotFound")})
 	@GetMapping

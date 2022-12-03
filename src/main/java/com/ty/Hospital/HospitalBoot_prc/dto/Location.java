@@ -13,8 +13,7 @@ public class Location {
 	private int id;
 	private String name;
 	private int pincode;
-	@OneToOne
-	private Branch branch;
+
 	public int getId() {
 		return id;
 	}
@@ -33,12 +32,7 @@ public class Location {
 	public void setPincode(int pincode) {
 		this.pincode = pincode;
 	}
-	public Branch getBranch() {
-		return branch;
-	}
-	public void setBranch(Branch branch) {
-		this.branch = branch;
-	}
+
 	
 	
 
