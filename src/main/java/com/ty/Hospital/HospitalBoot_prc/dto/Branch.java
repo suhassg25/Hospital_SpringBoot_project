@@ -6,14 +6,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Branch {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	@NotNull(message = "Enter branch name")
 	private String name;
-	private String location;
+	@NotNull(message = "enter phone number")
 	private long phone;
 	
 	@OneToOne(cascade = CascadeType.ALL)
@@ -37,12 +39,7 @@ public class Branch {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getLocation() {
-		return location;
-	}
-	public void setLocation(String location) {
-		this.location = location;
-	}
+	
 	public long getPhone() {
 		return phone;
 	}

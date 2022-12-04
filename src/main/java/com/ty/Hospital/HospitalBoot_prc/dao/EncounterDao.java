@@ -29,4 +29,5 @@ public class EncounterDao {
 		}
 		return optional.get();
 	}
+	
 }

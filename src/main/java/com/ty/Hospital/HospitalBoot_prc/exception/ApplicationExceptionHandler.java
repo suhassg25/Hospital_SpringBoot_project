@@ -41,6 +41,18 @@ public class ApplicationExceptionHandler extends ResponseEntityExceptionHandler 
 		ResponseEntity<ResponseStructure<String>> responseEntity= new ResponseEntity<ResponseStructure<String>>(responseStructure,HttpStatus.NOT_FOUND);
 		return responseEntity;
 	}
+	
+	@ExceptionHandler(UnableToDeleteException.class)
+	public ResponseEntity<ResponseStructure<String>> noResponseStructure(UnableToDeleteException exception){
+
+		ResponseStructure< String> responseStructure = new ResponseStructure<String>();
+		responseStructure.setStatus(HttpStatus.NOT_FOUND.value());
+		responseStructure.setMessage("No id found");
+		responseStructure.setData(exception.getMessage());
+		ResponseEntity<ResponseStructure<String>> responseEntity= new ResponseEntity<ResponseStructure<String>>( responseStructure, HttpStatus.NOT_FOUND);
+		return responseEntity;
+	}
+
 	@Override
 	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
 			HttpHeaders headers, HttpStatus status, WebRequest request) {

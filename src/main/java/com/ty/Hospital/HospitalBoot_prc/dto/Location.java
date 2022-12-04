@@ -5,16 +5,18 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Location {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	@NotNull(message = "Enter proper location name")
 	private String name;
+	@NotNull(message = "enter the pincode")
 	private int pincode;
-	@OneToOne
-	private Branch branch;
+
 	public int getId() {
 		return id;
 	}
@@ -33,12 +35,7 @@ public class Location {
 	public void setPincode(int pincode) {
 		this.pincode = pincode;
 	}
-	public Branch getBranch() {
-		return branch;
-	}
-	public void setBranch(Branch branch) {
-		this.branch = branch;
-	}
+
 	
 	
 

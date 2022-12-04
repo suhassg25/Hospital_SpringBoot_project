@@ -2,15 +2,20 @@ package com.ty.Hospital.HospitalBoot_prc.dto;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Items {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	@NotNull(message = "enter tablet name")
 	private String name;
+	@NotNull(message = "enter tablet price")	
 	private Double price;
+	@NotNull(message = "enter quantity")	
 	private int quantity;
 	public int getQuantity() {
 		return quantity;

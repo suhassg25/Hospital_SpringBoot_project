@@ -23,12 +23,12 @@ private HospitalDao dao;
 	
 	public ResponseEntity<ResponseStructure<Hospital>> saveHospital(Hospital hospital)
 	{
-				
+
 		ResponseEntity<ResponseStructure<Hospital>> entity;
 		ResponseStructure<Hospital> responseStructure=new ResponseStructure<Hospital>();
 		responseStructure.setStatus(HttpStatus.CREATED.value());
 		responseStructure.setMessage("Created Data");
-		responseStructure.setData(dao.saveHospital(hospital));
+		responseStructure.setData(dao.saveHospital(hospital)); 
 		return entity=new ResponseEntity<ResponseStructure<Hospital>>(responseStructure,HttpStatus.CREATED);
 		
 	}
