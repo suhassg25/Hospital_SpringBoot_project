@@ -8,14 +8,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Hospital {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	@NotNull( message = "Name must be entered")
 	private String name;
+	@NotNull(message = "Phone number not found")
 	private long phone;
+	@NotNull(message = "Enter email address")
 	private String email;
 	@OneToMany(cascade =  CascadeType.ALL)
 	private List<Branch> branch;

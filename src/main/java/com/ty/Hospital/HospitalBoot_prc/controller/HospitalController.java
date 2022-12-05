@@ -1,8 +1,5 @@
 package com.ty.Hospital.HospitalBoot_prc.controller;
 
-import java.util.List;
-
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -16,15 +13,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ty.Hospital.HospitalBoot_prc.dto.Branch;
 import com.ty.Hospital.HospitalBoot_prc.dto.Hospital;
-import com.ty.Hospital.HospitalBoot_prc.dto.Location;
 import com.ty.Hospital.HospitalBoot_prc.service.HospitalService;
 import com.ty.Hospital.HospitalBoot_prc.util.ResponseStructure;
 
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+
+
+import java.util.List;
+
+import javax.validation.Valid;
+
 
 @RestController
 @RequestMapping("hospital")

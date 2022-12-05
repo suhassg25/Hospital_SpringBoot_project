@@ -1,12 +1,20 @@
 package com.ty.Hospital.HospitalBoot_prc.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.ty.Hospital.HospitalBoot_prc.dao.EncounterDao;
 import com.ty.Hospital.HospitalBoot_prc.dao.MedOrderDao;
+import com.ty.Hospital.HospitalBoot_prc.dto.Encounter;
 import com.ty.Hospital.HospitalBoot_prc.dto.MedOrder;
+import com.ty.Hospital.HospitalBoot_prc.dto.Person;
 import com.ty.Hospital.HospitalBoot_prc.dto.MedOrder;
 import com.ty.Hospital.HospitalBoot_prc.exception.NoSuchIdFoundException;
 import com.ty.Hospital.HospitalBoot_prc.exception.UnableToUpdateException;
@@ -17,6 +25,9 @@ public class MedOrderService {
 
 	@Autowired
 	private MedOrderDao dao;
+	
+	@Autowired
+	EncounterDao dao2;
 	
 	public ResponseEntity<ResponseStructure<MedOrder>> updateMedOrder(MedOrder medOrder, int id)
 	{
@@ -29,9 +40,11 @@ public class MedOrderService {
 			responseStructure.setStatus(HttpStatus.OK.value());
 			responseStructure.setMessage("Updated Data");
 			responseStructure.setData(dao.updateMedOrder(medOrder));
-			return entity=new ResponseEntity<ResponseStructure<MedOrder>>(responseStructure,HttpStatus.OK);
 		}
-		throw new UnableToUpdateException();		
+		else {
+			throw new UnableToUpdateException();		
+		}
+		return entity=new ResponseEntity<ResponseStructure<MedOrder>>(responseStructure,HttpStatus.OK);
 	}
 	
 	public ResponseEntity<ResponseStructure<MedOrder>> getMedOrder( int id)
@@ -43,8 +56,33 @@ public class MedOrderService {
 			responseStructure.setStatus(HttpStatus.OK.value());
 			responseStructure.setMessage("Found Data");
 			responseStructure.setData(dao.getMedOrderById(id));
-			return entity=new ResponseEntity<ResponseStructure<MedOrder>>(responseStructure,HttpStatus.OK);
 		}
-		throw new NoSuchIdFoundException();		
+		else {
+			throw new NoSuchIdFoundException();		
+		}
+		return entity=new ResponseEntity<ResponseStructure<MedOrder>>(responseStructure,HttpStatus.OK);
+	}
+	
+	public ResponseEntity<ResponseStructure<MedOrder>> saveEncounter(@RequestBody MedOrder medOrder, @RequestParam int id)
+	{
+		
+		Encounter p1=dao2.getEncounterById(id);
+		
+		ResponseEntity<ResponseStructure<MedOrder>> entity;
+		List<MedOrder> list=new ArrayList<MedOrder>();
+		ResponseStructure<MedOrder> responseStructure=new ResponseStructure();
+		if(p1!=null)
+		{
+			responseStructure.setStatus(HttpStatus.CREATED.value());
+			responseStructure.setMessage("Saved");
+			 responseStructure.setData(medOrder);
+			 list.add(medOrder);
+			 p1.setMedOrder(list);
+		}
+		else
+		{
+			throw new NoSuchIdFoundException();
+		}
+		return entity= new ResponseEntity<ResponseStructure<MedOrder>>(responseStructure,HttpStatus.CREATED); 
 	}
 }

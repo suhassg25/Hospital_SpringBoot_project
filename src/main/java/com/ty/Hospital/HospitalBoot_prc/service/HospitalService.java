@@ -23,7 +23,7 @@ private HospitalDao dao;
 	
 	public ResponseEntity<ResponseStructure<Hospital>> saveHospital(Hospital hospital)
 	{
-		
+
 		ResponseEntity<ResponseStructure<Hospital>> entity;
 		ResponseStructure<Hospital> responseStructure=new ResponseStructure<Hospital>();
 		responseStructure.setStatus(HttpStatus.CREATED.value());

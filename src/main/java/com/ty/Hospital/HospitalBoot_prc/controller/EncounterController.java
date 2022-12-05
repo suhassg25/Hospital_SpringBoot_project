@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,24 +23,32 @@ public class EncounterController {
 	@Autowired
 	private EncounterService EncounterService;
 
-	@ApiOperation(value="Update Encounter", notes="It is used to update Encounter")
-	@ApiResponses(value= {
-			@ApiResponse(code=500,message="Internal Server Error"),
-			@ApiResponse(code=404,message="NotFound")})
-	
-	@PutMapping(consumes= {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE}, produces= {MediaType.APPLICATION_JSON_VALUE})
-	
-	public ResponseEntity<ResponseStructure<Encounter>> updateEncounter(@RequestBody Encounter encounter,@RequestParam int id) {
+/*	@ApiOperation(value = "save Encounter", notes = "It is used to save Encounter")
+	@ApiResponses(value = { @ApiResponse(code = 500, message = "Internal Server Error"),
+			@ApiResponse(code = 404, message = "NotFound") })
+	@PostMapping(consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, produces = {
+			MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<ResponseStructure<Encounter>> saveEncounter(@RequestBody Encounter encounter,@RequestParam int id)
+	{
+		return EncounterService.saveEncounter(encounter, id);
+	} */
+	@ApiOperation(value = "Update Encounter", notes = "It is used to update Encounter")
+	@ApiResponses(value = { @ApiResponse(code = 500, message = "Internal Server Error"),
+			@ApiResponse(code = 404, message = "NotFound") })
+
+	@PutMapping(consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, produces = {
+			MediaType.APPLICATION_JSON_VALUE })
+
+	public ResponseEntity<ResponseStructure<Encounter>> updateEncounter(@RequestBody Encounter encounter,
+			@RequestParam int id) {
 		return EncounterService.updateEncounter(encounter, id);
 	}
 
-	@ApiOperation(value="Get Encounter", notes="It is used to get Encounter")
-	@ApiResponses(value= {
-			@ApiResponse(code=500,message="Internal Server Error"),
-			@ApiResponse(code=404,message="NotFound")})
+	@ApiOperation(value = "Get Encounter", notes = "It is used to get Encounter")
+	@ApiResponses(value = { @ApiResponse(code = 500, message = "Internal Server Error"),
+			@ApiResponse(code = 404, message = "NotFound") })
 	@GetMapping
-	public ResponseEntity<ResponseStructure<Encounter>> findEncounter(@RequestParam int id)
-	{
+	public ResponseEntity<ResponseStructure<Encounter>> findEncounter(@RequestParam int id) {
 		return EncounterService.getEncounter(id);
 
 	}
