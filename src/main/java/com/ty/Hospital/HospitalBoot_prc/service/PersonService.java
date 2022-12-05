@@ -24,23 +24,8 @@ public class PersonService {
 	private PersonDao dao;
 
 	public ResponseEntity<ResponseStructure<Person>> savePerson(Person person) {
-		double totalcost = 0;
-		Person p1 = person;
-		List<Encounter> list = p1.getEncounter();
-		for (Encounter e : list) {
-			List<MedOrder> medOrder = e.getMedOrder();
-
-			for (MedOrder medOrder2 : medOrder) {
-				MedOrder medOrder4 = new MedOrder();
-				List<Items> items = medOrder2.getItems();
-
-				for (Items items2 : items) {
-					totalcost = totalcost + (items2.getPrice() * items2.getQuantity());
-				}
-				medOrder4.setTotalcost(totalcost);
-			}
-
-		}
+		
+		
 		ResponseEntity<ResponseStructure<Person>> entity;
 		ResponseStructure<Person> responseStructure = new ResponseStructure<Person>();
 		responseStructure.setStatus(HttpStatus.CREATED.value());

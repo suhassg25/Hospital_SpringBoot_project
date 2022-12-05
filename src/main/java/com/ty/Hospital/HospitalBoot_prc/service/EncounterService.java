@@ -19,7 +19,6 @@ import com.ty.Hospital.HospitalBoot_prc.exception.NoSuchIdFoundException;
 import com.ty.Hospital.HospitalBoot_prc.exception.UnableToUpdateException;
 import com.ty.Hospital.HospitalBoot_prc.util.ResponseStructure;
 
-
 @Service
 public class EncounterService {
 
@@ -59,26 +58,26 @@ public class EncounterService {
 		return entity = new ResponseEntity<ResponseStructure<Encounter>>(responseStructure, HttpStatus.OK);
 	}
 
-/*	public ResponseEntity<ResponseStructure<Encounter>> saveEncounter(Encounter encounter, int id) {
-	
+	public ResponseEntity<ResponseStructure<Encounter>> saveEncounter(Encounter encounter, int id) {
+
 		Person p1 = dao2.getPersonById(id);
 		ResponseEntity<ResponseStructure<Encounter>> entity;
-		List<Encounter> list = new ArrayList<Encounter>();
+		List<Encounter> list = p1.getEncounter();
 		ResponseStructure<Encounter> responseStructure = new ResponseStructure<Encounter>();
 		if (p1 != null) {
-			
+
 			responseStructure.setStatus(HttpStatus.CREATED.value());
 			responseStructure.setMessage("Saved");
-			list.add(encounter);
+			Encounter e3 = dao.saveEncounter(encounter);
+			responseStructure.setData(e3);
+			list.add(e3);
 			p1.setEncounter(list);
-			responseStructure.setData(dao.saveEncounter(encounter));
-			Encounter encounter2=new Encounter();
-		encounter2.setId(encounter.getId());
+			Person p2 = dao2.updatePerson(p1);
 
 		} else {
 			throw new NoSuchIdFoundException();
 		}
-		
+
 		return entity = new ResponseEntity<ResponseStructure<Encounter>>(responseStructure, HttpStatus.CREATED);
-	}*/
+	}
 }

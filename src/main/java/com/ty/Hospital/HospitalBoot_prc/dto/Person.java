@@ -23,7 +23,7 @@ public class Person {
 	@NotNull(message = "enter phone number of person")	
 	private long phone;
 	
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany
 	private List<Encounter>encounter;
 
 	public int getId() {

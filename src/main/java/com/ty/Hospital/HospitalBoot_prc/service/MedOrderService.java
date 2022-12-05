@@ -63,21 +63,22 @@ public class MedOrderService {
 		return entity=new ResponseEntity<ResponseStructure<MedOrder>>(responseStructure,HttpStatus.OK);
 	}
 	
-	public ResponseEntity<ResponseStructure<MedOrder>> saveEncounter(@RequestBody MedOrder medOrder, @RequestParam int id)
+	public ResponseEntity<ResponseStructure<MedOrder>> saveMedorder(@RequestBody MedOrder medOrder, @RequestParam int id)
 	{
 		
 		Encounter p1=dao2.getEncounterById(id);
 		
 		ResponseEntity<ResponseStructure<MedOrder>> entity;
-		List<MedOrder> list=new ArrayList<MedOrder>();
+		List<MedOrder> list=p1.getMedOrder();
 		ResponseStructure<MedOrder> responseStructure=new ResponseStructure();
 		if(p1!=null)
 		{
 			responseStructure.setStatus(HttpStatus.CREATED.value());
 			responseStructure.setMessage("Saved");
-			 responseStructure.setData(medOrder);
+			 responseStructure.setData(dao.saveMedOrder(medOrder));
 			 list.add(medOrder);
 			 p1.setMedOrder(list);
+			 dao2.updateEncounter(p1);
 		}
 		else
 		{

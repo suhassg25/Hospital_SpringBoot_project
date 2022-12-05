@@ -12,13 +12,15 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 public class Encounter {
+	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	@NotNull(message = "Enter reason for encounter")
 	private String reason;
 	
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany
 	private List<MedOrder>medOrder;
 	
 	@OneToMany
@@ -38,6 +40,10 @@ public class Encounter {
 	}
 	public List<MedOrder> getMedOrder() {
 		return medOrder;
+	}
+	@Override
+	public String toString() {
+		return "Encounter [id=" + id + ", reason=" + reason + ", medOrder=" + medOrder + ", branches=" + branches + "]";
 	}
 	public void setMedOrder(List<MedOrder> medOrder) {
 		this.medOrder = medOrder;
