@@ -1,8 +1,10 @@
 package com.ty.Hospital.HospitalBoot_prc.controller;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,25 +23,34 @@ public class MedOrderController {
 	@Autowired
 	private MedOrderService medOrderService;
 
-	@ApiOperation(value="Update MedOrder", notes="It is used to update MedOrder")
-	@ApiResponses(value= {
-			@ApiResponse(code=500,message="Internal Server Error"),
-			@ApiResponse(code=404,message="NotFound")})
-	
-	@PutMapping(consumes= {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE}, produces= {MediaType.APPLICATION_JSON_VALUE})
-	
-	public ResponseEntity<ResponseStructure<MedOrder>> updateMedOrder(@RequestBody MedOrder medOrder,@RequestParam int id) {
+	@ApiOperation(value = "Update MedOrder", notes = "It is used to update MedOrder")
+	@ApiResponses(value = { @ApiResponse(code = 500, message = "Internal Server Error"),
+			@ApiResponse(code = 404, message = "NotFound") })
+
+	@PutMapping(consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, produces = {
+			MediaType.APPLICATION_JSON_VALUE })
+
+	public ResponseEntity<ResponseStructure<MedOrder>> updateMedOrder(@RequestBody MedOrder medOrder,
+			@RequestParam int id) {
 		return medOrderService.updateMedOrder(medOrder, id);
 	}
 
-	@ApiOperation(value="Get MedOrder", notes="It is used to get MedOrder")
-	@ApiResponses(value= {
-			@ApiResponse(code=500,message="Internal Server Error"),
-			@ApiResponse(code=404,message="NotFound")})
+	@ApiOperation(value = "Get MedOrder", notes = "It is used to get MedOrder")
+	@ApiResponses(value = { @ApiResponse(code = 500, message = "Internal Server Error"),
+			@ApiResponse(code = 404, message = "NotFound") })
 	@GetMapping
-	public ResponseEntity<ResponseStructure<MedOrder>> findMedOrder(@RequestParam int id)
-	{
+	public ResponseEntity<ResponseStructure<MedOrder>> findMedOrder(@RequestParam int id) {
 		return medOrderService.getMedOrder(id);
 
+	}
+
+	@ApiOperation(value = "Save Medorder", notes = "used to save Medorder")
+	@ApiResponses(value = { @ApiResponse(code = 500, message = "Internal Server Error"),
+			@ApiResponse(code = 404, message = "NotFound") })
+	@PostMapping(consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, produces = {
+			MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<ResponseStructure<MedOrder>> saveMedOrder(@RequestBody MedOrder medOrder,
+			@RequestParam int id) {
+		return medOrderService.saveMedorder(medOrder, id);
 	}
 }

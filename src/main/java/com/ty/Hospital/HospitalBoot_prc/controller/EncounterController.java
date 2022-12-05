@@ -23,7 +23,7 @@ public class EncounterController {
 	@Autowired
 	private EncounterService EncounterService;
 
-/*	@ApiOperation(value = "save Encounter", notes = "It is used to save Encounter")
+	@ApiOperation(value = "save Encounter", notes = "It is used to save Encounter")
 	@ApiResponses(value = { @ApiResponse(code = 500, message = "Internal Server Error"),
 			@ApiResponse(code = 404, message = "NotFound") })
 	@PostMapping(consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, produces = {
@@ -31,7 +31,7 @@ public class EncounterController {
 	public ResponseEntity<ResponseStructure<Encounter>> saveEncounter(@RequestBody Encounter encounter,@RequestParam int id)
 	{
 		return EncounterService.saveEncounter(encounter, id);
-	} */
+	} 
 	@ApiOperation(value = "Update Encounter", notes = "It is used to update Encounter")
 	@ApiResponses(value = { @ApiResponse(code = 500, message = "Internal Server Error"),
 			@ApiResponse(code = 404, message = "NotFound") })

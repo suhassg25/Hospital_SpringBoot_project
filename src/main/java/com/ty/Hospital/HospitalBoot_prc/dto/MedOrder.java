@@ -16,7 +16,7 @@ public class MedOrder {
 	private int id;
 	private String descp;
 	private  double totalcost;
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany
 	private List<Items>items;
 	public int getId() {
 		return id;
